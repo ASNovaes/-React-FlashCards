@@ -5,10 +5,10 @@ const StyledQuestionCard = styled.div`
      margin-top: 20px;
 `;
 
-
 const StyledHeaderCard = styled.header` 
         align-items: center;
         background: #fff;
+        border-radius: .25rem .25rem 0 0;
         display: flex;
         height: 65px;
         justify-content: space-between;
@@ -36,6 +36,7 @@ const StyledHeaderCard = styled.header`
 
 const StyledCardContent = styled.div`
         background: #fff;
+        border-radius: 0 0 .25rem .25rem;
         display: flex;
         height: auto;
         justify-content: center;
@@ -61,27 +62,26 @@ const StyledRichTextEditor = styled.div`
         letter-spacing: .0625rem;
         margin-top: 10px;
         padding: 0;
+        padding-bottom: 0.5rem;
         text-transform: uppercase;
         cursor: text;
+     }     
+`;
+
+const StyledInnerText = styled.div`
+     :first-child > div{ 
+      box-shadow: 0 .125rem 0 0 #303545;
+      cursor: text;
+      font-size: 1.125rem;
+      font-weight: 400;
+      padding-bottom: 0.5rem;
+      transition: all .12s cubic-bezier(.47,0,.745,.715);
+     }
+
+     :first-child > div:focus{
+      box-shadow: 0 .275rem 0 0 #ffcd1f;
      }
 `;
 
-const StyledBorder = styled.div`
-  ::before {
-        content:'';
-        display: block;
-        box-shadow: 0 .125rem 0 0 #303545;
-        font-size: 1.125rem;
-        font-weight: 400;
-        padding-bottom: 0.5rem;
-        transition: all .12s cubic-bezier(.47,0,.745,.715);
-        cursor: text;
-     }
 
-     :hover::before {
-        box-shadow: 0 .125rem 0 0 #ffcd1f;
-     }
-`
-
-
-export { StyledQuestionCard, StyledCardContent, StyledRichTextEditor, StyledBorder, StyledHeaderCard }
+export { StyledQuestionCard, StyledCardContent, StyledRichTextEditor, StyledInnerText, StyledHeaderCard }

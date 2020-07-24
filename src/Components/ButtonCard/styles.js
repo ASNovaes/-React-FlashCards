@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledButtonCard = styled.div`
        align-items: center;
        background: #fff;
+       border-radius: .25rem;
        display: flex;
        height: 120px;
        justify-content: center;

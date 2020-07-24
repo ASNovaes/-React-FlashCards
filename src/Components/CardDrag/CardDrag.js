@@ -1,10 +1,10 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, useEffect } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { ItemTypes } from '../ItemTypes/ItemTypes';
 import { StyledQuestionCard, StyledCardContent, StyledRichTextEditor, StyledInnerText, StyledHeaderCard } from './styles';
 import { ContextCard } from '../Context/Context.js';
 
-export const CardDrag = ({ id, index, question, answer, moveCard, findCard }) => {
+export const CardDrag = ({ id, index, moveCard, findCard }) => {
 
   const { cards, setCards } = useContext(ContextCard);
 
@@ -47,22 +47,26 @@ export const CardDrag = ({ id, index, question, answer, moveCard, findCard }) =>
     setCards(upCards);
   });
 
+  const setValueCard = (value, name) => {
+    return cards[index][name] = value;
+  }
+
   return (
     <StyledQuestionCard ref={(node) => drag(drop(node))} style={{ border }}>
       <StyledHeaderCard>
         <p>{index + 1}</p>
-        <i class='far' onClick={() => deleteCard(index)}>&#xf2ed;</i>
+        <i className='far' onClick={() => deleteCard(index)}>&#xf2ed;</i>
       </StyledHeaderCard>
       <StyledCardContent>
         <StyledRichTextEditor>
           <StyledInnerText>
-            <div contentEditable='true'>{question}</div>
+            <div contentEditable='true' onInput={e => { setValueCard(e.currentTarget.textContent, 'question') }}></div>
           </StyledInnerText>
           <p>Termo</p>
         </StyledRichTextEditor>
         <StyledRichTextEditor>
-          <StyledInnerText>
-            <div contentEditable='true'>{answer}</div>
+          <StyledInnerText >
+            <div contentEditable='true' onInput={e => { setValueCard(e.currentTarget.textContent, 'definnition') }}></div>
           </StyledInnerText>
           <p>Definicão</p>
         </StyledRichTextEditor>

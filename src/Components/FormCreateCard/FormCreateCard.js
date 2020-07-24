@@ -11,12 +11,12 @@ export default function FormCreateCard() {
                     <button>Criar</button>
                 </header>
                 <StyledRichTextEditor>
-                    <input type="text" />
+                    <input type="text" placeholder="Digite um título, como Biologia - Capítulo 22: evolução"/>
                     <p>Título</p>
                 </StyledRichTextEditor>
 
                 <StyledRichTextEditor>
-                    <input type="text" />
+                    <input type="text" placeholder="Adicione uma descrição..."/>
                     <p>Descrição</p>
                 </StyledRichTextEditor>
 

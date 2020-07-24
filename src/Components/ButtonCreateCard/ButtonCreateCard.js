@@ -5,10 +5,12 @@ import { ContextCard } from '../Context/Context.js';
 export default function ButtonCreateCard() {
 
     const { cards, setCards } = useContext(ContextCard);
+    
+     
 
     return (
         <StyledButtonCreateCard>
-            <a>Concluído</a>
+            <a onClick={() => console.log(cards)}>Concluído</a>
         </StyledButtonCreateCard >
     );
 }

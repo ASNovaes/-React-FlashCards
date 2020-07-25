@@ -8,7 +8,8 @@ export default function ButtonCard() {
 
     return (
         <StyledButtonCard>
-            <a onClick={() => setCards([...cards, { id: new Date().getTime(), question: '', definnition: '' }])}>adicionar cartão</a>
+            <a onClick={() => setCards([...cards,{ id: new Date().getTime(), question: '', definnition: '' }])}>adicionar cartão</a>
         </StyledButtonCard>
-    )
+    );
 }
+

@@ -47,8 +47,10 @@ export const CardDrag = ({ id, index, moveCard, findCard }) => {
     setCards(upCards);
   });
 
-  const setValueCard = (value, name) => {
-    return cards[index][name] = value;
+  const setValueCard = (e, fieldName) => {
+    let value = e.currentTarget.textContent;
+
+    cards[index][fieldName] = value;
   }
 
   return (
@@ -60,13 +62,23 @@ export const CardDrag = ({ id, index, moveCard, findCard }) => {
       <StyledCardContent>
         <StyledRichTextEditor>
           <StyledInnerText>
-            <div contentEditable='true' onInput={e => { setValueCard(e.currentTarget.textContent, 'question') }}></div>
+            <div contentEditable='true'
+              key={index}
+              suppressContentEditableWarning={true}
+              onInput={e => { setValueCard(e, 'question') }}>
+              {cards[index].question}
+            </div>
           </StyledInnerText>
           <p>Termo</p>
         </StyledRichTextEditor>
         <StyledRichTextEditor>
           <StyledInnerText >
-            <div contentEditable='true' onInput={e => { setValueCard(e.currentTarget.textContent, 'definnition') }}></div>
+            <div contentEditable='true'
+              key={index}
+              suppressContentEditableWarning={true}
+              onInput={e => { setValueCard(e, 'definnition') }}>
+              {cards[index].definnition}
+            </div>
           </StyledInnerText>
           <p>Definicão</p>
         </StyledRichTextEditor>

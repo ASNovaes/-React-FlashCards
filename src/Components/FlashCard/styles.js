@@ -44,5 +44,4 @@ const StyledControl = styled.div`
      }
 `;
 
-
 export { SyledContainer, StyledFlashCard, StyledControl };

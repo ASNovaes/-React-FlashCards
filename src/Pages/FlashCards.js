@@ -5,8 +5,8 @@ import FlashCard from '../Components/FlashCard/FlashCard';
 export default function FlashCards() {
     return (
         <>
-            <Header />
-            <FlashCard />
+                <Header />
+                <FlashCard />
         </>
     );
 }

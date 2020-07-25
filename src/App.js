@@ -1,15 +1,13 @@
 import React from 'react';
-// import Header from './Components/Header/Header';
-// import Content from './Components/Content/Content';
-
 import Router from './Router/Router'
+import ContextProvider from './Components/Context/Context'
+
 export default function App() {
   return (
     <>
-      <Router />
-      {/*     
-      <Header />
-      <Content /> */}
+      <ContextProvider>
+        <Router />
+      </ContextProvider>
     </>
   );
 }

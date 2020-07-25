@@ -2,23 +2,22 @@ import React, { useState, useEffect, createContext } from 'react';
 
 export const ContextCard = createContext();
 
-const ITEMS = [
-    {
-        id: 1,
-        question: '',
-        answer: '',
-    },
-];
-
 export default function ContextProvider({ children }) {
 
     const [cards, setCards] = useState([]);
+    const [listName, setListName] = useState({ cod: '', listTitle: '', listDescription: '' });
+    const [listsCards, setListsCards] = useState(); //TEMP
+
+    useEffect(() => {
+        setListsCards([listName, ...cards])
+
+    }, [cards, listName]);
 
     return (
         <>
-            <ContextCard.Provider value={{cards, setCards}}>
+            <ContextCard.Provider value={{ cards, setCards, listName, setListName, listsCards }}>
                 {children}
             </ContextCard.Provider>
         </>
-    )
+    );
 } 

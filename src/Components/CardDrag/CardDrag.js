@@ -1,26 +1,31 @@
-import React, { useContext, useCallback, useEffect } from 'react';
-import { useDrag, useDrop } from 'react-dnd';
-import { ItemTypes } from '../ItemTypes/ItemTypes';
-import { StyledQuestionCard, StyledCardContent, StyledRichTextEditor, StyledInnerText, StyledHeaderCard } from './styles';
-import { ContextCard } from '../Context/Context.js';
+import React, { useContext, useCallback, useEffect } from "react";
+import { useDrag, useDrop } from "react-dnd";
+import { ItemTypes } from "../ItemTypes/ItemTypes";
+import {
+  StyledQuestionCard,
+  StyledCardContent,
+  StyledRichTextEditor,
+  StyledInnerText,
+  StyledHeaderCard,
+} from "./styles";
+import { ContextCard } from "../Context/Context.js";
 
 export const CardDrag = ({ id, index, moveCard, findCard }) => {
-
   const { cards, setCards } = useContext(ContextCard);
 
-  const originalIndex = findCard(id).index
+  const originalIndex = findCard(id).index;
   const [{ isDragging }, drag] = useDrag({
     item: { type: ItemTypes.CARD, id, originalIndex },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
     end: (dropResult, monitor) => {
-      const { id: droppedId, originalIndex } = monitor.getItem()
-      const didDrop = monitor.didDrop()
+      const { id: droppedId, originalIndex } = monitor.getItem();
+      const didDrop = monitor.didDrop();
       if (!didDrop) {
-        moveCard(droppedId, originalIndex)
+        moveCard(droppedId, originalIndex);
       }
-    }
+    },
   });
 
   const [_, drop] = useDrop({
@@ -31,7 +36,7 @@ export const CardDrag = ({ id, index, moveCard, findCard }) => {
         const { index: overIndex } = findCard(id);
         moveCard(draggedId, overIndex);
       }
-    }
+    },
   });
 
   let border;
@@ -51,32 +56,42 @@ export const CardDrag = ({ id, index, moveCard, findCard }) => {
     let value = e.currentTarget.textContent;
 
     cards[index][fieldName] = value;
-  }
+  };
 
   return (
     <StyledQuestionCard ref={(node) => drag(drop(node))} style={{ border }}>
       <StyledHeaderCard>
         <p>{index + 1}</p>
-        <i className='far' onClick={() => deleteCard(index)}>&#xf2ed;</i>
+        <i className="far" onClick={() => deleteCard(index)}>
+          &#xf2ed;
+        </i>
       </StyledHeaderCard>
       <StyledCardContent>
         <StyledRichTextEditor>
           <StyledInnerText>
-            <div contentEditable='true'
+            <div
+              contentEditable="true"
               key={index}
               suppressContentEditableWarning={true}
-              onInput={e => { setValueCard(e, 'question') }}>
+              onInput={(e) => {
+                setValueCard(e, "question");
+              }}
+            >
               {cards[index].question}
             </div>
           </StyledInnerText>
           <p>Termo</p>
         </StyledRichTextEditor>
         <StyledRichTextEditor>
-          <StyledInnerText >
-            <div contentEditable='true'
+          <StyledInnerText>
+            <div
+              contentEditable="true"
               key={index}
               suppressContentEditableWarning={true}
-              onInput={e => { setValueCard(e, 'definnition') }}>
+              onInput={(e) => {
+                setValueCard(e, "definnition");
+              }}
+            >
               {cards[index].definnition}
             </div>
           </StyledInnerText>
@@ -85,4 +100,4 @@ export const CardDrag = ({ id, index, moveCard, findCard }) => {
       </StyledCardContent>
     </StyledQuestionCard>
   );
-}
+};

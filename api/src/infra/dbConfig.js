@@ -5,7 +5,7 @@ const connection = () => {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: '524136',
+        password: '123456',
         database: 'flashcardsystem'
     });
 }

@@ -11,7 +11,7 @@ export default function ButtonCard() {
         onClick={() =>
           setCards([
             ...cards,
-            { id: new Date().getTime(), question: "", definnition: "" },
+            { id: new Date().getTime(), question: "", definition: "" },
           ])
         }
       >

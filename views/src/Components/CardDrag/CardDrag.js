@@ -52,12 +52,6 @@ export const CardDrag = ({ id, index, moveCard, findCard }) => {
     setCards(upCards);
   });
 
-  const setValueCard = (e, fieldName) => {
-    let value = e.currentTarget.textContent;
-
-    cards[index][fieldName] = value;
-  };
-
   return (
     <StyledQuestionCard ref={(node) => drag(drop(node))} style={{ border }}>
       <StyledHeaderCard>
@@ -74,7 +68,8 @@ export const CardDrag = ({ id, index, moveCard, findCard }) => {
               key={index}
               suppressContentEditableWarning={true}
               onInput={(e) => {
-                setValueCard(e, "question");
+                cards[index].question = e.currentTarget.textContent
+                setCards(cards)
               }}
             >
               {cards[index].question}
@@ -88,16 +83,18 @@ export const CardDrag = ({ id, index, moveCard, findCard }) => {
               contentEditable="true"
               key={index}
               suppressContentEditableWarning={true}
+
               onInput={(e) => {
-                setValueCard(e, "definnition");
+                cards[index].definition = e.currentTarget.textContent
+                setCards(cards)
               }}
             >
-              {cards[index].definnition}
+              {cards[index].definition}
             </div>
           </StyledInnerText>
           <p>Definicão</p>
         </StyledRichTextEditor>
       </StyledCardContent>
-    </StyledQuestionCard>
+    </StyledQuestionCard >
   );
 };

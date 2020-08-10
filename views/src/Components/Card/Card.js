@@ -38,13 +38,13 @@ export default function Card() {
                 {
                     cards.map((card, i) => (
                         <CardDrag
-                            key={card.id}
-                            id={`${card.id}`}
+                            key={i}
                             question={card.question}
-                            answer={card.answer}
+                            definition={card.definition}
                             moveCard={moveCard}
                             findCard={findCard}
                             index={i}
+                            id={`${card.id}`}
                         />
                     ))}
             </StyledContainer>
